@@ -7,6 +7,8 @@ using movie_api.ApiLayer.Models;
 using movie_api.ApplicationLayer.Common.Behaviour;
 using movie_api.ApplicationLayer.UtilityService.Implementation;
 using movie_api.ApplicationLayer.UtilityService.Interface;
+using movie_api.InfrastructureLayer.Interfaces;
+using movie_api.InfrastructureLayer.Repository;
 using System.Data;
 using System.Reflection;
 using ZymLabs.NSwag.FluentValidation;
@@ -21,7 +23,9 @@ namespace movie_api.InfrastructureLayer
             services.AddEndpointDefinitions(typeof(GapUser));
 
             services.AddScoped<IGenericService, GenericService>();
+            services.AddScoped(typeof(ICacheRepository<>), typeof(CacheRepository<>));
             services.AddHttpClient();
+            services.AddMemoryCache();
 
             services.AddExceptionHandler<CustomExceptionHandler>();
 
