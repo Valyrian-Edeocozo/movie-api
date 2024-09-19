@@ -16,7 +16,7 @@ namespace movie_api.ApplicationLayer.Common.Behaviour
             {
                 var requestName = typeof(TRequest).Name;
 
-                this._logger.LogError(ex, "SeaBaas.CentralJournalPosting Request: Unhandled Exception for Request {Name} {@Request}", requestName, request);
+                this._logger.LogError(ex, "Movie.Feeds Request: Unhandled Exception for Request {Name} {@Request}", requestName, request);
 
                 throw;
             }
